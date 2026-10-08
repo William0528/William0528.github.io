@@ -1,1 +1,94 @@
-ciallo
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="《行知·晓庄》——纪念陶行知先生诞辰135周年剧情向网页游戏，以代码绘展晓庄情。" />
+<title>行知·晓庄 | 陶行知诞辰 135 周年剧情向网页游戏</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ============== 标题界面 ============== -->
+  <section id="title" class="screen active">
+    <div class="petals" aria-hidden="true"></div>
+    <div class="title-inner">
+      <div class="seal seal-lg" aria-hidden="true"><span>行<br>知</span></div>
+      <h1 class="game-title">行知 · 晓庄</h1>
+      <p class="game-sub">陶行知先生诞辰 135 周年 · 剧情向网页游戏</p>
+      <p class="game-sub2">「码承行知志，绘展晓庄情」</p>
+
+      <div class="name-row">
+        <label for="inp-name">你的名字</label>
+        <input id="inp-name" maxlength="8" placeholder="小陶" autocomplete="off" />
+      </div>
+
+      <div class="btn-col">
+        <button class="btn btn-main" id="btn-new">开始新的旅程</button>
+        <button class="btn" id="btn-continue">继续上次的旅程</button>
+        <button class="btn" id="btn-how">玩法说明</button>
+      </div>
+
+      <p class="title-foot">
+        1891 年 10 月 18 日 · 安徽歙县黄潭源村 ——— 1946 年 7 月 25 日 · 上海<br />
+        谨以此作，致敬「伟大的人民教育家」。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== 游戏主界面 ============== -->
+  <section id="game" class="screen">
+    <div id="hud">
+      <div class="hud-left">
+        <div id="hud-chapter">序章</div>
+        <div id="hud-objective">—</div>
+      </div>
+      <div class="hud-right">
+        <div id="hud-stats" class="hud-stats"></div>
+        <button class="icon-btn" id="btn-menu" title="菜单（Esc）">☰</button>
+      </div>
+    </div>
+
+    <div id="stage-wrap">
+      <div id="stage"></div>
+    </div>
+
+    <div id="bottom-bar">
+      <div id="map-name">—</div>
+      <div id="pad">
+        <button class="pad-btn" data-dir="up">▲</button>
+        <button class="pad-btn" data-dir="left">◀</button>
+        <button class="pad-btn pad-act" data-act="act">谈话</button>
+        <button class="pad-btn" data-dir="right">▶</button>
+        <button class="pad-btn" data-dir="down">▼</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 对话层 ============== -->
+  <div id="dialog" class="hidden" role="dialog" aria-live="polite">
+    <div id="dlg-panel">
+      <div id="dlg-who" class="hidden"></div>
+      <div id="dlg-text"></div>
+      <div id="dlg-choices" class="hidden"></div>
+      <div id="dlg-more" class="hidden">▼</div>
+      <div id="dlg-tip">空格 / 回车 / 点击 继续</div>
+    </div>
+  </div>
+
+  <!-- ============== 覆盖层（章节卡 / 菜单 / 结局 / 说明） ============== -->
+  <div id="overlay" class="hidden"><div id="overlay-box"></div></div>
+
+  <div id="toasts" aria-live="polite"></div>
+</div>
+
+<script src="js/story.js"></script>
+<script src="js/engine.js"></script>
+<script>
+  window.addEventListener('load', function () {
+    if (window.Game && typeof window.Game.boot === 'function') window.Game.boot();
+  });
+</script>
+</body>
+</html>
